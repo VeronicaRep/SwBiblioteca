@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             pnlMenu = new Panel();
+            btnInicio = new FontAwesome.Sharp.IconButton();
             btnSalida = new Button();
             btnReportes = new Button();
             btnPrestamos = new Button();
@@ -37,7 +38,6 @@
             btnAutores = new Button();
             btnUsuarios = new Button();
             btnLibros = new Button();
-            btnInicio = new Button();
             pnlLogo = new Panel();
             pictureBox1 = new PictureBox();
             lblsubtitulo = new Label();
@@ -53,6 +53,7 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.White;
+            pnlMenu.Controls.Add(btnInicio);
             pnlMenu.Controls.Add(btnSalida);
             pnlMenu.Controls.Add(btnReportes);
             pnlMenu.Controls.Add(btnPrestamos);
@@ -60,17 +61,37 @@
             pnlMenu.Controls.Add(btnAutores);
             pnlMenu.Controls.Add(btnUsuarios);
             pnlMenu.Controls.Add(btnLibros);
-            pnlMenu.Controls.Add(btnInicio);
             pnlMenu.Controls.Add(pnlLogo);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(333, 563);
+            pnlMenu.Size = new Size(333, 712);
             pnlMenu.TabIndex = 0;
+            // 
+            // btnInicio
+            // 
+            btnInicio.Dock = DockStyle.Top;
+            btnInicio.FlatAppearance.BorderSize = 0;
+            btnInicio.FlatStyle = FlatStyle.Flat;
+            btnInicio.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInicio.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            btnInicio.IconColor = Color.Black;
+            btnInicio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnInicio.IconSize = 35;
+            btnInicio.ImageAlign = ContentAlignment.MiddleLeft;
+            btnInicio.Location = new Point(0, 130);
+            btnInicio.Name = "btnInicio";
+            btnInicio.Size = new Size(333, 54);
+            btnInicio.TabIndex = 0;
+            btnInicio.Text = "Inicio";
+            btnInicio.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnInicio.UseCompatibleTextRendering = true;
+            btnInicio.UseVisualStyleBackColor = true;
+            btnInicio.Click += btnInicio_Click;
             // 
             // btnSalida
             // 
-            btnSalida.Dock = DockStyle.Top;
+            btnSalida.FlatAppearance.BorderSize = 0;
             btnSalida.FlatStyle = FlatStyle.Flat;
             btnSalida.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalida.ForeColor = Color.Black;
@@ -81,10 +102,11 @@
             btnSalida.Text = "Salida";
             btnSalida.TextAlign = ContentAlignment.MiddleLeft;
             btnSalida.UseVisualStyleBackColor = true;
+            btnSalida.Click += btnSalir_Click;
             // 
             // btnReportes
             // 
-            btnReportes.Dock = DockStyle.Top;
+            btnReportes.FlatAppearance.BorderSize = 0;
             btnReportes.FlatStyle = FlatStyle.Flat;
             btnReportes.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReportes.ForeColor = Color.Black;
@@ -95,10 +117,11 @@
             btnReportes.Text = "Reportes";
             btnReportes.TextAlign = ContentAlignment.MiddleLeft;
             btnReportes.UseVisualStyleBackColor = true;
+            btnReportes.Click += btnReportes_Click;
             // 
             // btnPrestamos
             // 
-            btnPrestamos.Dock = DockStyle.Top;
+            btnPrestamos.FlatAppearance.BorderSize = 0;
             btnPrestamos.FlatStyle = FlatStyle.Flat;
             btnPrestamos.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrestamos.ForeColor = Color.Black;
@@ -109,10 +132,11 @@
             btnPrestamos.Text = "Prestamos";
             btnPrestamos.TextAlign = ContentAlignment.MiddleLeft;
             btnPrestamos.UseVisualStyleBackColor = true;
+            btnPrestamos.Click += btnPrestamos_Click;
             // 
             // btnEditoriales
             // 
-            btnEditoriales.Dock = DockStyle.Top;
+            btnEditoriales.FlatAppearance.BorderSize = 0;
             btnEditoriales.FlatStyle = FlatStyle.Flat;
             btnEditoriales.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditoriales.ForeColor = Color.Black;
@@ -123,10 +147,11 @@
             btnEditoriales.Text = "Editoriales";
             btnEditoriales.TextAlign = ContentAlignment.MiddleLeft;
             btnEditoriales.UseVisualStyleBackColor = true;
+            btnEditoriales.Click += btneditores_Click;
             // 
             // btnAutores
             // 
-            btnAutores.Dock = DockStyle.Top;
+            btnAutores.FlatAppearance.BorderSize = 0;
             btnAutores.FlatStyle = FlatStyle.Flat;
             btnAutores.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAutores.ForeColor = Color.Black;
@@ -137,10 +162,11 @@
             btnAutores.Text = "Autores";
             btnAutores.TextAlign = ContentAlignment.MiddleLeft;
             btnAutores.UseVisualStyleBackColor = true;
+            btnAutores.Click += btnAutores_Click;
             // 
             // btnUsuarios
             // 
-            btnUsuarios.Dock = DockStyle.Top;
+            btnUsuarios.FlatAppearance.BorderSize = 0;
             btnUsuarios.FlatStyle = FlatStyle.Flat;
             btnUsuarios.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUsuarios.ForeColor = Color.Black;
@@ -151,10 +177,11 @@
             btnUsuarios.Text = "Usuarios";
             btnUsuarios.TextAlign = ContentAlignment.MiddleLeft;
             btnUsuarios.UseVisualStyleBackColor = true;
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnLibros
             // 
-            btnLibros.Dock = DockStyle.Top;
+            btnLibros.FlatAppearance.BorderSize = 0;
             btnLibros.FlatStyle = FlatStyle.Flat;
             btnLibros.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLibros.ForeColor = Color.Black;
@@ -166,22 +193,6 @@
             btnLibros.TextAlign = ContentAlignment.MiddleLeft;
             btnLibros.UseVisualStyleBackColor = true;
             btnLibros.Click += btnLibros_Click;
-            // 
-            // btnInicio
-            // 
-            btnInicio.Dock = DockStyle.Top;
-            btnInicio.FlatStyle = FlatStyle.Flat;
-            btnInicio.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInicio.ForeColor = Color.Black;
-            btnInicio.Location = new Point(0, 130);
-            btnInicio.Margin = new Padding(10, 0, 10, 0);
-            btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(333, 50);
-            btnInicio.TabIndex = 1;
-            btnInicio.Text = " Inicio";
-            btnInicio.TextAlign = ContentAlignment.MiddleLeft;
-            btnInicio.UseVisualStyleBackColor = true;
-            btnInicio.Click += btnInicio_Click;
             // 
             // pnlLogo
             // 
@@ -234,16 +245,16 @@
             pnlSuperior.Dock = DockStyle.Top;
             pnlSuperior.Location = new Point(333, 0);
             pnlSuperior.Name = "pnlSuperior";
-            pnlSuperior.Size = new Size(742, 90);
+            pnlSuperior.Size = new Size(1011, 90);
             pnlSuperior.TabIndex = 1;
             // 
             // pnlEstado
             // 
             pnlEstado.BackColor = Color.Silver;
             pnlEstado.Dock = DockStyle.Bottom;
-            pnlEstado.Location = new Point(333, 513);
+            pnlEstado.Location = new Point(333, 662);
             pnlEstado.Name = "pnlEstado";
-            pnlEstado.Size = new Size(742, 50);
+            pnlEstado.Size = new Size(1011, 50);
             pnlEstado.TabIndex = 2;
             // 
             // pnlContenido
@@ -252,14 +263,14 @@
             pnlContenido.Dock = DockStyle.Fill;
             pnlContenido.Location = new Point(333, 90);
             pnlContenido.Name = "pnlContenido";
-            pnlContenido.Size = new Size(742, 423);
+            pnlContenido.Size = new Size(1011, 572);
             pnlContenido.TabIndex = 3;
             // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1075, 563);
+            ClientSize = new Size(1344, 712);
             Controls.Add(pnlContenido);
             Controls.Add(pnlEstado);
             Controls.Add(pnlSuperior);
@@ -267,6 +278,7 @@
             Name = "FrmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestión Biblioteca";
+            WindowState = FormWindowState.Maximized;
             pnlMenu.ResumeLayout(false);
             pnlLogo.ResumeLayout(false);
             pnlLogo.PerformLayout();
@@ -284,7 +296,6 @@
         private Label lblTitulo;
         private Label lblsubtitulo;
         private PictureBox pictureBox1;
-        private Button btnInicio;
         private Button btnEditoriales;
         private Button btnAutores;
         private Button btnUsuarios;
@@ -292,5 +303,6 @@
         private Button btnSalida;
         private Button btnReportes;
         private Button btnPrestamos;
+        private FontAwesome.Sharp.IconButton btnInicio;
     }
 }

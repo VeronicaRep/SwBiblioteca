@@ -20,10 +20,7 @@ namespace SwBiblioteca
             formulario.Show();
         }
 
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(new FrmInicio());
-        }
+
 
         private void btnLibros_Click(object sender, EventArgs e)
         {
@@ -60,5 +57,9 @@ namespace SwBiblioteca
             Application.Exit();
         }
 
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FrmInicio());
+        }
     }
 }
