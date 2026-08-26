@@ -352,7 +352,7 @@ private void btnGuardar_Click(object sender, EventArgs e)
 
 _____________________________________________
 
-*** Método CargarLibroSeleccionado***
+*** Método CargarLibroSeleccionado ***
 _____________________________________________
 
 private void CargarLibroSeleccionado(object sender, DataGridViewCellEventArgs e)
@@ -546,20 +546,6 @@ private void btnEliminar_Click(object sender, EventArgs e)
             MessageBoxIcon.Error);
     }
 }
-
-_____________________________________________
-
-*** Método dgvLibros_CellDoubleClick***
-_____________________________________________
-
-private void dgvLibros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-{
-    if (e.RowIndex < 0)
-        return;
-
-    CargarLibroSeleccionado();
-}
-
 
 _____________________________________________
 
