@@ -494,5 +494,25 @@ namespace SwBiblioteca
             }
         }
 
+        private void CargarLibroSeleccionado(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            txtISBN.Text = dgvLibros.Rows[e.RowIndex].Cells["ISBN"].Value.ToString();
+            txtTitulo.Text = dgvLibros.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+
+            cmbAutor.SelectedValue = Convert.ToInt32(
+                dgvLibros.Rows[e.RowIndex].Cells["IdAutor"].Value
+            );
+
+            cmbEditorial.SelectedValue = Convert.ToInt32(
+                dgvLibros.Rows[e.RowIndex].Cells["IdEditorial"].Value
+            );
+
+            txtCategoria.Text = dgvLibros.Rows[e.RowIndex].Cells["Categoria"].Value.ToString();
+            txtAnio.Text = dgvLibros.Rows[e.RowIndex].Cells["Anio"].Value.ToString();
+            txtExistencias.Text = dgvLibros.Rows[e.RowIndex].Cells["Existencias"].Value.ToString();
+        }
     }
 }

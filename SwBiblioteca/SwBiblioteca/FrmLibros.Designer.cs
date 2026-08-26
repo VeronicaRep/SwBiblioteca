@@ -344,6 +344,7 @@
             dgvLibros.RowHeadersWidth = 62;
             dgvLibros.Size = new Size(1100, 192);
             dgvLibros.TabIndex = 4;
+            dgvLibros.CellDoubleClick += CargarLibroSeleccionado;
             // 
             // FrmLibros
             // 
