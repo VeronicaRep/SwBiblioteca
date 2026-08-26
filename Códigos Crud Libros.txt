@@ -3,7 +3,8 @@ _____________________________________________
 *** Prueba de la conexión  ***
 _____________________________________________
 
-Después de InitializeComponent();
+El siguiente código se debe incluir después de InitializeComponent();
+
 Conexion conexion = new Conexion(); try { using (var cn = conexion.ObtenerConexion()) { cn.Open(); MessageBox.Show("Conexión exitosa con la base de datos.", "Biblioteca", MessageBoxButtons.OK, MessageBoxIcon.Information); } } catch (Exception ex) { MessageBox.Show("Error de conexión:\n" + ex.Message, "Biblioteca", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
 _____________________________________________
