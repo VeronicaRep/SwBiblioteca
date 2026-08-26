@@ -33,13 +33,13 @@
             pnlBusqueda = new Panel();
             lblTitulo2 = new Label();
             btnBuscar = new Button();
-            txtBuscar = new TextBox();
+            txtBuscarISBN = new TextBox();
             pnlDatos = new Panel();
             txtExistencias = new TextBox();
             txtAnio = new TextBox();
             txtCategoria = new TextBox();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
+            cmbEditorial = new ComboBox();
+            cmbAutor = new ComboBox();
             txtTitulo = new TextBox();
             txtISBN = new TextBox();
             lblExistencias = new Label();
@@ -90,7 +90,7 @@
             pnlBusqueda.BackColor = Color.WhiteSmoke;
             pnlBusqueda.Controls.Add(lblTitulo2);
             pnlBusqueda.Controls.Add(btnBuscar);
-            pnlBusqueda.Controls.Add(txtBuscar);
+            pnlBusqueda.Controls.Add(txtBuscarISBN);
             pnlBusqueda.Dock = DockStyle.Top;
             pnlBusqueda.Location = new Point(0, 60);
             pnlBusqueda.Name = "pnlBusqueda";
@@ -114,21 +114,22 @@
             btnBuscar.TabIndex = 2;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // txtBuscar
+            // txtBuscarISBN
             // 
-            txtBuscar.Location = new Point(508, 18);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(217, 31);
-            txtBuscar.TabIndex = 1;
+            txtBuscarISBN.Location = new Point(508, 18);
+            txtBuscarISBN.Name = "txtBuscarISBN";
+            txtBuscarISBN.Size = new Size(217, 31);
+            txtBuscarISBN.TabIndex = 1;
             // 
             // pnlDatos
             // 
             pnlDatos.Controls.Add(txtExistencias);
             pnlDatos.Controls.Add(txtAnio);
             pnlDatos.Controls.Add(txtCategoria);
-            pnlDatos.Controls.Add(comboBox2);
-            pnlDatos.Controls.Add(comboBox1);
+            pnlDatos.Controls.Add(cmbEditorial);
+            pnlDatos.Controls.Add(cmbAutor);
             pnlDatos.Controls.Add(txtTitulo);
             pnlDatos.Controls.Add(txtISBN);
             pnlDatos.Controls.Add(lblExistencias);
@@ -166,21 +167,21 @@
             txtCategoria.Size = new Size(342, 31);
             txtCategoria.TabIndex = 11;
             // 
-            // comboBox2
+            // cmbEditorial
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(596, 142);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(342, 33);
-            comboBox2.TabIndex = 10;
+            cmbEditorial.FormattingEnabled = true;
+            cmbEditorial.Location = new Point(596, 142);
+            cmbEditorial.Name = "cmbEditorial";
+            cmbEditorial.Size = new Size(342, 33);
+            cmbEditorial.TabIndex = 10;
             // 
-            // comboBox1
+            // cmbAutor
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(596, 98);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(342, 33);
-            comboBox1.TabIndex = 9;
+            cmbAutor.FormattingEnabled = true;
+            cmbAutor.Location = new Point(596, 98);
+            cmbAutor.Name = "cmbAutor";
+            cmbAutor.Size = new Size(342, 33);
+            cmbAutor.TabIndex = 9;
             // 
             // txtTitulo
             // 
@@ -294,6 +295,7 @@
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnEditar
             // 
@@ -306,6 +308,7 @@
             btnEditar.TabIndex = 2;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnGuardar
             // 
@@ -318,6 +321,7 @@
             btnGuardar.TabIndex = 1;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnNuevo
             // 
@@ -330,6 +334,7 @@
             btnNuevo.TabIndex = 0;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // dgvLibros
             // 
@@ -370,7 +375,7 @@
         private Panel pnlTitulo;
         private Label lblTitulo;
         private Panel pnlBusqueda;
-        private TextBox txtBuscar;
+        private TextBox txtBuscarISBN;
         private Button btnBuscar;
         private Label lblTitulo2;
         private Panel pnlDatos;
@@ -390,8 +395,8 @@
         private DataGridView dgvLibros;
         private TextBox txtISBN;
         private TextBox txtTitulo;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox cmbEditorial;
+        private ComboBox cmbAutor;
         private TextBox txtExistencias;
         private TextBox txtAnio;
         private TextBox txtCategoria;

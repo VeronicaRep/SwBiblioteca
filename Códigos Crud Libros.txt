@@ -1,0 +1,343 @@
+
+_____________________________________________
+
+*** Método cargar Libros ***
+_____________________________________________
+
+private void CargarLibros()
+{
+    try
+    {
+        Conexion conexion = new Conexion();
+
+        using (SqlConnection cn = conexion.ObtenerConexion())
+        {
+            cn.Open();
+
+            string consulta = "SELECT * FROM Libros";
+
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(consulta, cn))
+            {
+                DataTable tabla = new DataTable();
+
+                adaptador.Fill(tabla);
+
+                dgvLibros.DataSource = tabla;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            "Error al cargar los libros:\n" + ex.Message,
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+    }
+}
+
+_____________________________________________
+
+*** Método cargar autores ***
+_____________________________________________
+
+private void CargarAutores()
+{
+    try
+    {
+        Conexion conexion = new Conexion();
+
+        using (SqlConnection cn = conexion.ObtenerConexion())
+        {
+            cn.Open();
+
+            string consulta = "SELECT IdAutor, Nombre, Apellido FROM Autores ORDER BY Nombre, Apellido";
+
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(consulta, cn))
+            {
+                DataTable tabla = new DataTable();
+
+                adaptador.Fill(tabla);
+
+                tabla.Columns.Add("NombreCompleto", typeof(string));
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    fila["NombreCompleto"] =
+                        fila["Nombre"].ToString() + " " +
+                        fila["Apellido"].ToString();
+                }
+
+                cmbAutor.DataSource = tabla;
+                cmbAutor.DisplayMember = "NombreCompleto";
+                cmbAutor.ValueMember = "IdAutor";
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            "Error al cargar los autores:\n" + ex.Message,
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+    }
+}
+
+_____________________________________________
+
+*** Método cargar editoriales ***
+_____________________________________________
+
+private void CargarEditoriales()
+{
+    try
+    {
+        Conexion conexion = new Conexion();
+
+        using (SqlConnection cn = conexion.ObtenerConexion())
+        {
+            cn.Open();
+
+            string consulta = "SELECT IdEditorial, Nombre FROM Editoriales ORDER BY Nombre";
+
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(consulta, cn))
+            {
+                DataTable tabla = new DataTable();
+
+                adaptador.Fill(tabla);
+
+                cmbEditorial.DataSource = tabla;
+                cmbEditorial.DisplayMember = "Nombre";
+                cmbEditorial.ValueMember = "IdEditorial";
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            "Error al cargar las editoriales:\n" + ex.Message,
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+    }
+}
+
+_____________________________________________
+
+*** BtnBuscar - ISBN
+_____________________________________________
+
+private void btnBuscar_Click(object sender, EventArgs e)
+{
+    try
+    {
+        if (string.IsNullOrWhiteSpace(txtBuscarISBN.Text))
+        {
+            MessageBox.Show(
+                "Ingrese un ISBN para realizar la búsqueda.",
+                "Biblioteca",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return;
+        }
+
+        Conexion conexion = new Conexion();
+
+        using (SqlConnection cn = conexion.ObtenerConexion())
+        {
+            cn.Open();
+
+            string consulta = "SELECT * FROM Libros WHERE ISBN = @ISBN";
+
+            using (SqlCommand comando = new SqlCommand(consulta, cn))
+            {
+                comando.Parameters.AddWithValue("@ISBN", txtBuscarISBN.Text.Trim());
+
+                using (SqlDataReader lector = comando.ExecuteReader())
+                {
+                    if (lector.Read())
+                    {
+                        txtISBN.Text = lector["ISBN"].ToString();
+                        txtTitulo.Text = lector["Titulo"].ToString();
+                        txtCategoria.Text = lector["Categoria"].ToString();
+                        txtAnio.Text = lector["Anio"].ToString();
+                        txtExistencias.Text = lector["Existencias"].ToString();
+
+                        MessageBox.Show(
+                            "Libro encontrado.",
+                            "Biblioteca",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "No se encontró un libro con ese ISBN.",
+                            "Biblioteca",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            "Error al buscar el libro:\n" + ex.Message,
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+    }
+}
+
+
+_____________________________________________
+
+*** Ajuste código - if(lector.Read) 
+_____________________________________________
+
+if (lector.Read())
+{
+    txtISBN.Text = lector["ISBN"].ToString();
+    txtTitulo.Text = lector["Titulo"].ToString();
+
+    cmbAutor.SelectedValue = Convert.ToInt32(lector["IdAutor"]);
+    cmbEditorial.SelectedValue = Convert.ToInt32(lector["IdEditorial"]);
+
+    txtCategoria.Text = lector["Categoria"].ToString();
+    txtAnio.Text = lector["Anio"].ToString();
+    txtExistencias.Text = lector["Existencias"].ToString();
+
+    MessageBox.Show(
+        "Libro encontrado.",
+        "Biblioteca",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
+}
+else
+{
+    MessageBox.Show(
+        "No se encontró un libro con ese ISBN.",
+        "Biblioteca",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
+}
+
+
+_____________________________________________
+
+*** Código btnNuevo_Click
+_____________________________________________
+
+private void btnNuevo_Click(object sender, EventArgs e)
+{
+    txtISBN.Clear();
+    txtTitulo.Clear();
+    txtCategoria.Clear();
+    txtAnio.Clear();
+    txtExistencias.Clear();
+
+    cmbAutor.SelectedIndex = -1;
+    cmbEditorial.SelectedIndex = -1;
+
+    txtISBN.Focus();
+}
+
+_____________________________________________
+
+*** Código btnGuardar_Click
+_____________________________________________
+
+private void btnGuardar_Click(object sender, EventArgs e)
+{
+    try
+    {
+        if (string.IsNullOrWhiteSpace(txtISBN.Text) ||
+            string.IsNullOrWhiteSpace(txtTitulo.Text) ||
+            cmbAutor.SelectedIndex == -1 ||
+            cmbEditorial.SelectedIndex == -1 ||
+            string.IsNullOrWhiteSpace(txtCategoria.Text) ||
+            string.IsNullOrWhiteSpace(txtAnio.Text) ||
+            string.IsNullOrWhiteSpace(txtExistencias.Text))
+        {
+            MessageBox.Show(
+                "Complete todos los campos antes de guardar.",
+                "Biblioteca",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return;
+        }
+
+        int anio;
+        int existencias;
+
+        if (!int.TryParse(txtAnio.Text, out anio))
+        {
+            MessageBox.Show(
+                "El año debe ser un número entero.",
+                "Biblioteca",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return;
+        }
+
+        if (!int.TryParse(txtExistencias.Text, out existencias))
+        {
+            MessageBox.Show(
+                "Las existencias deben ser un número entero.",
+                "Biblioteca",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return;
+        }
+
+        Conexion conexion = new Conexion();
+
+        using (SqlConnection cn = conexion.ObtenerConexion())
+        {
+            cn.Open();
+
+            string consulta = @"INSERT INTO Libros
+                                (ISBN, Titulo, IdAutor, IdEditorial, Categoria, Anio, Existencias)
+                                VALUES
+                                (@ISBN, @Titulo, @IdAutor, @IdEditorial, @Categoria, @Anio, @Existencias)";
+
+            using (SqlCommand comando = new SqlCommand(consulta, cn))
+            {
+                comando.Parameters.AddWithValue("@ISBN", txtISBN.Text.Trim());
+                comando.Parameters.AddWithValue("@Titulo", txtTitulo.Text.Trim());
+                comando.Parameters.AddWithValue("@IdAutor", Convert.ToInt32(cmbAutor.SelectedValue));
+                comando.Parameters.AddWithValue("@IdEditorial", Convert.ToInt32(cmbEditorial.SelectedValue));
+                comando.Parameters.AddWithValue("@Categoria", txtCategoria.Text.Trim());
+                comando.Parameters.AddWithValue("@Anio", anio);
+                comando.Parameters.AddWithValue("@Existencias", existencias);
+
+                comando.ExecuteNonQuery();
+            }
+        }
+
+        MessageBox.Show(
+            "Libro guardado correctamente.",
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+
+        CargarLibros();
+
+        btnNuevo_Click(null, null);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(
+            "Error al guardar el libro:\n" + ex.Message,
+            "Biblioteca",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+    }
+}
