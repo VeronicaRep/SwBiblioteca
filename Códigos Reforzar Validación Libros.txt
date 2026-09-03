@@ -1,0 +1,142 @@
+
+// Nuevo código private void btnGuardar_Click - Para evitar ISBN duplicados
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtISBN.Text) ||
+                    string.IsNullOrWhiteSpace(txtTitulo.Text) ||
+                    cmbAutor.SelectedIndex == -1 ||
+                    cmbEditorial.SelectedIndex == -1 ||
+                    string.IsNullOrWhiteSpace(txtCategoria.Text) ||
+                    string.IsNullOrWhiteSpace(txtAnio.Text) ||
+                    string.IsNullOrWhiteSpace(txtExistencias.Text))
+                {
+                    MessageBox.Show(
+                        "Complete todos los campos antes de guardar.",
+                        "Biblioteca",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                int anio;
+                int existencias;
+
+                if (!int.TryParse(txtAnio.Text, out anio))
+                {
+                    MessageBox.Show(
+                        "El año debe ser un número entero.",
+                        "Biblioteca",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                if (!int.TryParse(txtExistencias.Text, out existencias) || existencias < 0)
+                {
+                    MessageBox.Show(
+                        "Las existencias deben ser un número entero mayor o igual a 0.",
+                        "Biblioteca",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                Conexion conexion = new Conexion();
+
+                using (SqlConnection cn = conexion.ObtenerConexion())
+                {
+                    cn.Open();
+
+                    // COMPROBAR SI EL ISBN YA EXISTE
+                    string consultaExiste =
+                        "SELECT COUNT(*) FROM Libros WHERE ISBN = @ISBN";
+
+                    using (SqlCommand comandoExiste =
+                           new SqlCommand(consultaExiste, cn))
+                    {
+                        comandoExiste.Parameters.AddWithValue(
+                            "@ISBN",
+                            txtISBN.Text.Trim());
+
+                        int cantidad =
+                            Convert.ToInt32(comandoExiste.ExecuteScalar());
+
+                        if (cantidad > 0)
+                        {
+                            MessageBox.Show(
+                                "Ya existe un libro registrado con ese ISBN.",
+                                "Biblioteca",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                    }
+
+                    // INSERTAR EL LIBRO
+                    string consulta = @"INSERT INTO Libros
+                        (ISBN, Titulo, IdAutor, IdEditorial, Categoria, Anio, Existencias)
+                        VALUES
+                        (@ISBN, @Titulo, @IdAutor, @IdEditorial, @Categoria, @Anio, @Existencias)";
+
+                    using (SqlCommand comando =
+                           new SqlCommand(consulta, cn))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@ISBN",
+                            txtISBN.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@Titulo",
+                            txtTitulo.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@IdAutor",
+                            Convert.ToInt32(cmbAutor.SelectedValue));
+
+                        comando.Parameters.AddWithValue(
+                            "@IdEditorial",
+                            Convert.ToInt32(cmbEditorial.SelectedValue));
+
+                        comando.Parameters.AddWithValue(
+                            "@Categoria",
+                            txtCategoria.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@Anio",
+                            anio);
+
+                        comando.Parameters.AddWithValue(
+                            "@Existencias",
+                            existencias);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show(
+                    "Libro guardado correctamente.",
+                    "Biblioteca",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                CargarLibros();
+
+                btnNuevo_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al guardar el libro:\n" + ex.Message,
+                    "Biblioteca",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+

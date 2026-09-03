@@ -360,6 +360,7 @@
             SizeGripStyle = SizeGripStyle.Show;
             Text = "FrmLibros";
             WindowState = FormWindowState.Maximized;
+            Load += FrmLibros_Load;
             pnlTitulo.ResumeLayout(false);
             pnlTitulo.PerformLayout();
             pnlBusqueda.ResumeLayout(false);
