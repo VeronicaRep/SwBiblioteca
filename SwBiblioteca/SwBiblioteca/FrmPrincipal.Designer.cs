@@ -108,7 +108,7 @@
             btnReportes.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnReportes.UseCompatibleTextRendering = true;
             btnReportes.UseVisualStyleBackColor = true;
-            btnReportes.Click += btnPrestamos_Click;
+            btnReportes.Click += btnReportes_Click;
             // 
             // btnPrestamos
             // 

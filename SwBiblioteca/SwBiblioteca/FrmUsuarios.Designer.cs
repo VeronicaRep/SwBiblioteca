@@ -31,9 +31,14 @@
             pnlTitulo = new Panel();
             lblTitulo = new Label();
             pnlDatos = new Panel();
+            btnCancelar = new FontAwesome.Sharp.IconButton();
             txtCorreo = new TextBox();
+            btnEliminar = new FontAwesome.Sharp.IconButton();
+            btnEditar = new FontAwesome.Sharp.IconButton();
             txtTelefono = new TextBox();
+            btnGuardar = new FontAwesome.Sharp.IconButton();
             txtDocumento = new TextBox();
+            btnNuevo = new FontAwesome.Sharp.IconButton();
             txtApellido = new TextBox();
             txtNombre = new TextBox();
             lblCorreo = new Label();
@@ -41,11 +46,6 @@
             lblDocumento = new Label();
             lblApellido = new Label();
             lblNombre = new Label();
-            btnCancelar = new FontAwesome.Sharp.IconButton();
-            btnEliminar = new FontAwesome.Sharp.IconButton();
-            btnEditar = new FontAwesome.Sharp.IconButton();
-            btnGuardar = new FontAwesome.Sharp.IconButton();
-            btnNuevo = new FontAwesome.Sharp.IconButton();
             pnlLista = new Panel();
             dgvUsuarios = new DataGridView();
             pnlTitulo.SuspendLayout();
@@ -79,14 +79,14 @@
             // pnlDatos
             // 
             pnlDatos.Controls.Add(btnCancelar);
-            pnlDatos.Controls.Add(this.txtCorreo);
+            pnlDatos.Controls.Add(txtCorreo);
             pnlDatos.Controls.Add(btnEliminar);
             pnlDatos.Controls.Add(btnEditar);
-            pnlDatos.Controls.Add(this.txtTelefono);
+            pnlDatos.Controls.Add(txtTelefono);
             pnlDatos.Controls.Add(btnGuardar);
-            pnlDatos.Controls.Add(this.txtDocumento);
+            pnlDatos.Controls.Add(txtDocumento);
             pnlDatos.Controls.Add(btnNuevo);
-            pnlDatos.Controls.Add(this.txtApellido);
+            pnlDatos.Controls.Add(txtApellido);
             pnlDatos.Controls.Add(txtNombre);
             pnlDatos.Controls.Add(lblCorreo);
             pnlDatos.Controls.Add(lblTelefono);
@@ -99,33 +99,108 @@
             pnlDatos.Size = new Size(1344, 417);
             pnlDatos.TabIndex = 3;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.Transparent;
+            btnCancelar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancelar.IconColor = Color.Black;
+            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancelar.Location = new Point(985, 320);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(130, 42);
+            btnCancelar.TabIndex = 13;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new Point(602, 222);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new Size(342, 31);
-            this.txtCorreo.TabIndex = 13;
+            txtCorreo.Location = new Point(602, 222);
+            txtCorreo.Name = "txtCorreo";
+            txtCorreo.Size = new Size(342, 31);
+            txtCorreo.TabIndex = 13;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEliminar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEliminar.IconColor = Color.Black;
+            btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEliminar.Location = new Point(814, 320);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(130, 42);
+            btnEliminar.TabIndex = 12;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.Transparent;
+            btnEditar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEditar.IconColor = Color.Black;
+            btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditar.Location = new Point(641, 320);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(130, 42);
+            btnEditar.TabIndex = 11;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new Point(602, 177);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new Size(342, 31);
-            this.txtTelefono.TabIndex = 12;
+            txtTelefono.Location = new Point(602, 177);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(342, 31);
+            txtTelefono.TabIndex = 12;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGuardar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnGuardar.IconColor = Color.Black;
+            btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnGuardar.Location = new Point(475, 320);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(130, 42);
+            btnGuardar.TabIndex = 10;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new Point(602, 130);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new Size(342, 31);
-            this.txtDocumento.TabIndex = 11;
+            txtDocumento.Location = new Point(602, 130);
+            txtDocumento.Name = "txtDocumento";
+            txtDocumento.Size = new Size(342, 31);
+            txtDocumento.TabIndex = 11;
+            // 
+            // btnNuevo
+            // 
+            btnNuevo.BackColor = Color.Transparent;
+            btnNuevo.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevo.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnNuevo.IconColor = Color.Black;
+            btnNuevo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnNuevo.Location = new Point(296, 320);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new Size(130, 42);
+            btnNuevo.TabIndex = 9;
+            btnNuevo.Text = "Nuevo";
+            btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new Point(602, 82);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new Size(342, 31);
-            this.txtApellido.TabIndex = 8;
+            txtApellido.Location = new Point(602, 82);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(342, 31);
+            txtApellido.TabIndex = 8;
             // 
             // txtNombre
             // 
@@ -179,76 +254,6 @@
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre:";
             // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.Transparent;
-            btnCancelar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnCancelar.IconColor = Color.Black;
-            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancelar.Location = new Point(985, 320);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(130, 42);
-            btnCancelar.TabIndex = 13;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.Transparent;
-            btnEliminar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnEliminar.IconColor = Color.Black;
-            btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEliminar.Location = new Point(814, 320);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(130, 42);
-            btnEliminar.TabIndex = 12;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnEditar
-            // 
-            btnEditar.BackColor = Color.Transparent;
-            btnEditar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnEditar.IconColor = Color.Black;
-            btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(641, 320);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(130, 42);
-            btnEditar.TabIndex = 11;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Transparent;
-            btnGuardar.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnGuardar.IconColor = Color.Black;
-            btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnGuardar.Location = new Point(475, 320);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(130, 42);
-            btnGuardar.TabIndex = 10;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // btnNuevo
-            // 
-            btnNuevo.BackColor = Color.Transparent;
-            btnNuevo.Font = new Font("Segoe Fluent Icons", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevo.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnNuevo.IconColor = Color.Black;
-            btnNuevo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnNuevo.Location = new Point(296, 320);
-            btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(130, 42);
-            btnNuevo.TabIndex = 9;
-            btnNuevo.Text = "Nuevo";
-            btnNuevo.UseVisualStyleBackColor = false;
-            // 
             // pnlLista
             // 
             pnlLista.BackColor = Color.White;
@@ -274,6 +279,7 @@
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(1344, 463);
             dgvUsuarios.TabIndex = 2;
+            dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
             // 
             // FrmUsuarios
             // 
