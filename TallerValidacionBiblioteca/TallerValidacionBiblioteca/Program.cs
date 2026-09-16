@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TallerValidacionBiblioteca
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Console.WriteLine("Bienvenido al sistema de cálculo de multas por retraso en la devolución de libros.");
+            Console.WriteLine("Por favor, ingrese el nombre del usuario.");
+            string nombreUsuario = Console.ReadLine();
+            Console.WriteLine("Ingrese el número de días de retraso en la devolución del libro.");
+            bool diasValidos = int.TryParse(Console.ReadLine(), out int diasRetraso);
+            Console.WriteLine("Ingrese el valor de la multa por día de retraso.");
+            bool valorValido = double.TryParse(Console.ReadLine(), out double valorPorDia);
+            Console.WriteLine();
+
+            if (!diasValidos)
+            {
+                Console.WriteLine("Error: Los días de retraso deben ser un número entero valido");
+
+            }
+            else if(!valorValido)
+            {
+                Console.WriteLine("Error: El valor por día debe ser un número válido.");
+            }
+            else if(diasRetraso < 0)
+            {
+                Console.WriteLine("Error: El número de días de retraso no puede ser negativo.");
+            }
+            else if(valorPorDia < 0)
+            {
+                Console.WriteLine("Error: El valor por día no puede ser negativo.");
+            }
+            else
+            {
+                double multa = diasRetraso * valorPorDia;
+                Console.WriteLine("Resumen de la multa:");
+                Console.WriteLine("Usuario: " + nombreUsuario);
+                Console.WriteLine("Días de retraso: " +
+               diasRetraso);
+                Console.WriteLine("Valor por día: $" + valorPorDia);
+                Console.WriteLine("El valor de la multa es: $" + multa);
+            }
+
+            
+            
+        }
+    }
+}

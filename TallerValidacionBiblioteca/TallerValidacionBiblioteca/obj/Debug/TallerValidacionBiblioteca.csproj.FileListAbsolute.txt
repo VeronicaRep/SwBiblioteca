@@ -1,0 +1,7 @@
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\bin\Debug\TallerValidacionBiblioteca.exe.config
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\bin\Debug\TallerValidacionBiblioteca.exe
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\bin\Debug\TallerValidacionBiblioteca.pdb
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\obj\Debug\TallerValidacionBiblioteca.csproj.AssemblyReference.cache
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\obj\Debug\TallerValidacionBiblioteca.csproj.CoreCompileInputs.cache
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\obj\Debug\TallerValidacionBiblioteca.exe
+C:\Users\vcast\Documents\GitHub\SwBiblioteca\TallerValidacionBiblioteca\TallerValidacionBiblioteca\obj\Debug\TallerValidacionBiblioteca.pdb
